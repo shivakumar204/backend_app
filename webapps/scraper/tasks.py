@@ -14,17 +14,16 @@ def scrape_data():
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            headlines = soup.find_all('h2')  # Adjust this selector based on the actual structure
+            headlines = soup.find_all('h2')  
 
-            # Clear previous data
             ScrapedData.objects.all().delete()
 
             for headline in headlines:
                 title = headline.text.strip()
                 if title:  # Only create if there's a title
                     ScrapedData.objects.create(title=title)
-                    print(f"Saved headline: {title}")  # Debug output
+                    print(f"Saved headline: {title}") 
         else:
-            print(f"Failed to retrieve data: {response.status_code}")  # Debug output
+            print(f"Failed to retrieve data: {response.status_code}")
     except Exception as e:
-        print(f"An error occurred: {e}")  # Handle exceptions
+        print(f"An error occurred: {e}") 
