@@ -1,0 +1,32 @@
+<!-- templates/shortener/url_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Shortened URLs</title>
+</head>
+<body>
+    <h1>All Shortened URLs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Original URL</th>
+                <th>Short URL</th>
+                <th>Access Count</th>
+                <th>Expiration Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for url in urls %}
+                <tr>
+                    <td><a href="{{ url.original_url }}" target="_blank">{{ url.original_url }}</a></td>
+                    <td><a href="{{ request.build_absolute_uri }}/{{ url.short_url }}" target="_blank">{{ url.short_url }}</a></td>
+                    <td>{{ url.access_count }}</td>
+                    <td>{% if url.expiry_date %}{{ url.expiry_date }}{% else %}N/A{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'home' %}">Shorten another URL</a>
+</body>
+</html>

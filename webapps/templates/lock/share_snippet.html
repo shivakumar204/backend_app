@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PasteLockly - Share Snippet</title>
+</head>
+<body>
+    <h1>Share a new snippet</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="text" required></textarea>  <!-- Ensure this name matches the model field -->
+        <button type="submit">Share Snippet</button>
+    </form>
+    
+    <a href="{% url 'home' %}">Back to home</a>
+</body>
+</html>
