@@ -6,8 +6,8 @@
 <body>
     <h1>Shared Snippets</h1>
     <ul>
-        {% for snippet in snippets %}  <!-- Ensure the context variable name matches -->
-            <li>{{ snippet.text_content }} - {{ snippet.created_at }}</li>  <!-- Use text_content instead of text -->
+        {% for snippet in snippets %}  
+            <li>{{ snippet.text_content }} - {{ snippet.created_at }}</li> 
         {% empty %}
             <li>No snippets available</li>
         {% endfor %}
