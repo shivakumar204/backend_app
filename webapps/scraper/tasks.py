@@ -20,7 +20,7 @@ def scrape_data():
 
             for headline in headlines:
                 title = headline.text.strip()
-                if title:  # Only create if there's a title
+                if title:  
                     ScrapedData.objects.create(title=title)
                     print(f"Saved headline: {title}") 
         else:
